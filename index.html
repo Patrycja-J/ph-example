@@ -33,10 +33,6 @@
         .toast { position: fixed; bottom: 30px; right: 30px; background: #333; color: white; padding: 14px 20px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
         .toast.show { opacity: 1; }
     </style>
-    <script>
-        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(a!==void 0?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return a!=="posthog"&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"),o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-        posthog.init('phx_N4DYtiuZSjJX9hfsGVeJn9BfWmAM5WTpiu83aZcz2qgfDo8R', { api_host: 'https://eu.posthog.com' });
-    </script>
 </head>
 <body>
 
@@ -60,15 +56,15 @@
 <section class="features">
     <div class="card" onclick="track('feature_click', 'Analityka')">
         <h3>📊 Analityka</h3>
-        <p>Śledź eventy, buduj funnele i mierz retencję użytkowników w czasie rzeczywistym.</p>
+        <p>Sledz eventy, buduj funnele i mierz retencje uzytkownikow w czasie rzeczywistym.</p>
     </div>
     <div class="card" onclick="track('feature_click', 'Session Replay')">
         <h3>🎥 Session Replay</h3>
-        <p>Oglądaj nagrania sesji i odkryj co tak naprawdę robią Twoi użytkownicy.</p>
+        <p>Ogladaj nagrania sesji i odkryj co tak naprawde robia Twoi uzytkownicy.</p>
     </div>
     <div class="card" onclick="track('feature_click', 'Feature Flags')">
         <h3>🚩 Feature Flags</h3>
-        <p>Wdrażaj funkcje stopniowo i bezpiecznie rollbackuj bez deploymentu.</p>
+        <p>Wdrazaj funkcje stopniowo i bezpiecznie rollbackuj bez deploymentu.</p>
     </div>
     <div class="card" onclick="track('feature_click', 'A/B Testing')">
         <h3>🧪 A/B Testing</h3>
@@ -79,53 +75,60 @@
 <section class="pricing">
     <h2>Cennik</h2>
     <div class="plans">
-        <div class="plan" onclick="track('pricing_click', 'Free')">
+        <div class="plan">
             <h3>Free</h3>
-            <div class="price">0 zł</div>
+            <div class="price">0 zl</div>
             <ul>
-                <li>1M eventów / mies.</li>
-                <li>5k sesji nagrań</li>
+                <li>1M eventow / mies.</li>
+                <li>5k sesji nagran</li>
                 <li>1 projekt</li>
             </ul>
             <button class="plan-btn" onclick="track('plan_selected', 'Free')">Wybierz Free</button>
         </div>
-        <div class="plan" onclick="track('pricing_click', 'Pro')">
+        <div class="plan">
             <h3>Pro</h3>
-            <div class="price">299 zł</div>
+            <div class="price">299 zl</div>
             <ul>
-                <li>10M eventów / mies.</li>
-                <li>50k sesji nagrań</li>
-                <li>5 projektów</li>
+                <li>10M eventow / mies.</li>
+                <li>50k sesji nagran</li>
+                <li>5 projektow</li>
             </ul>
             <button class="plan-btn" onclick="track('plan_selected', 'Pro')">Wybierz Pro</button>
         </div>
-        <div class="plan" onclick="track('pricing_click', 'Enterprise')">
+        <div class="plan">
             <h3>Enterprise</h3>
             <div class="price">∞</div>
             <ul>
                 <li>Nielimitowane eventy</li>
-                <li>SSO & SAML</li>
+                <li>SSO i SAML</li>
                 <li>Dedykowany support</li>
             </ul>
-            <button class="plan-btn" onclick="track('plan_selected', 'Enterprise')">Skontaktuj się</button>
+            <button class="plan-btn" onclick="track('plan_selected', 'Enterprise')">Skontaktuj sie</button>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2025 DataFlow. Zbudowano na PostHog.</p>
+    <p>2025 DataFlow. Zbudowano na PostHog.</p>
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(a!==void 0?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return a!=="posthog"&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+
+    posthog.init('phx_N4DYtiuZSjJX9hfsGVeJn9BfWmAM5WTpiu83aZcz2qgfDo8R', {
+        api_host: 'https://eu.posthog.com'
+    });
+
     function track(event, name) {
         posthog.capture(event, { name: name });
-        const toast = document.getElementById('toast');
-        toast.textContent = '✓ Event: ' + event + ' → ' + name;
+        var toast = document.getElementById('toast');
+        toast.textContent = 'Event: ' + event + ' - ' + name;
         toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
+        setTimeout(function() { toast.classList.remove('show'); }, 2000);
     }
 </script>
+
 </body>
 </html>
