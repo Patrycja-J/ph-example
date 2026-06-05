@@ -2,26 +2,130 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Moja testowa strona</title>
+    <title>PostHog Demo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #f5f5f5; color: #333; }
+        header { background: #1a1a2e; color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 22px; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px; cursor: pointer; }
+        .hero { background: linear-gradient(135deg, #16213e, #0f3460); color: white; padding: 80px 40px; text-align: center; }
+        .hero h2 { font-size: 42px; margin-bottom: 16px; }
+        .hero p { font-size: 18px; opacity: 0.8; margin-bottom: 32px; }
+        .btn { padding: 14px 28px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 8px; }
+        .btn-primary { background: #e94560; color: white; }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .features { display: flex; gap: 24px; padding: 60px 40px; justify-content: center; flex-wrap: wrap; }
+        .card { background: white; border-radius: 12px; padding: 32px; width: 260px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); }
+        .card h3 { margin-bottom: 12px; font-size: 18px; }
+        .card p { font-size: 14px; color: #666; line-height: 1.6; }
+        .pricing { background: white; padding: 60px 40px; text-align: center; }
+        .pricing h2 { font-size: 32px; margin-bottom: 40px; }
+        .plans { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+        .plan { border: 2px solid #eee; border-radius: 12px; padding: 32px; width: 220px; cursor: pointer; transition: border-color 0.2s; }
+        .plan:hover { border-color: #e94560; }
+        .plan h3 { font-size: 20px; margin-bottom: 8px; }
+        .plan .price { font-size: 32px; font-weight: bold; color: #e94560; margin: 16px 0; }
+        .plan ul { list-style: none; font-size: 14px; color: #666; line-height: 2; }
+        .plan-btn { margin-top: 20px; width: 100%; background: #1a1a2e; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; }
+        footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 24px; font-size: 14px; }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: #333; color: white; padding: 14px 20px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .toast.show { opacity: 1; }
+    </style>
     <script>
-        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(a!==void 0?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return a!=="posthog"&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-        posthog.init('phx_N4DYtiuZSjJX9hfsGVeJn9BfWmAM5WTpiu83aZcz2qgfDo8R', {
-            api_host: 'https://eu.posthog.com'
-        });
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(a!==void 0?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return a!=="posthog"&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"),o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phx_N4DYtiuZSjJX9hfsGVeJn9BfWmAM5WTpiu83aZcz2qgfDo8R', { api_host: 'https://eu.posthog.com' });
     </script>
 </head>
 <body>
-    <h1>Testowa strona PostHog</h1>
-    <p>Kliknij przyciski poniżej, żeby wygenerować eventy!</p>
 
-    <button onclick="posthog.capture('button_clicked', {button_name: 'rejestracja'})">
-        Zarejestruj się
-    </button>
-    <button onclick="posthog.capture('button_clicked', {button_name: 'demo'})">
-        Zobacz demo
-    </button>
-    <button onclick="posthog.capture('button_clicked', {button_name: 'cennik'})">
-        Cennik
-    </button>
+<header>
+    <h1>🐗 DataFlow</h1>
+    <nav>
+        <a onclick="track('nav_click', 'Produkt')">Produkt</a>
+        <a onclick="track('nav_click', 'Cennik')">Cennik</a>
+        <a onclick="track('nav_click', 'Blog')">Blog</a>
+        <a onclick="track('nav_click', 'Kontakt')">Kontakt</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Analityka bez kompromisów</h2>
+    <p>Zrozum swoich użytkowników. Podejmuj lepsze decyzje produktowe.</p>
+    <button class="btn btn-primary" onclick="track('cta_click', 'Zacznij za darmo')">Zacznij za darmo</button>
+    <button class="btn btn-secondary" onclick="track('cta_click', 'Zobacz demo')">Zobacz demo</button>
+</section>
+
+<section class="features">
+    <div class="card" onclick="track('feature_click', 'Analityka')">
+        <h3>📊 Analityka</h3>
+        <p>Śledź eventy, buduj funnele i mierz retencję użytkowników w czasie rzeczywistym.</p>
+    </div>
+    <div class="card" onclick="track('feature_click', 'Session Replay')">
+        <h3>🎥 Session Replay</h3>
+        <p>Oglądaj nagrania sesji i odkryj co tak naprawdę robią Twoi użytkownicy.</p>
+    </div>
+    <div class="card" onclick="track('feature_click', 'Feature Flags')">
+        <h3>🚩 Feature Flags</h3>
+        <p>Wdrażaj funkcje stopniowo i bezpiecznie rollbackuj bez deploymentu.</p>
+    </div>
+    <div class="card" onclick="track('feature_click', 'A/B Testing')">
+        <h3>🧪 A/B Testing</h3>
+        <p>Testuj hipotezy i podejmuj decyzje oparte na danych, nie przeczuciach.</p>
+    </div>
+</section>
+
+<section class="pricing">
+    <h2>Cennik</h2>
+    <div class="plans">
+        <div class="plan" onclick="track('pricing_click', 'Free')">
+            <h3>Free</h3>
+            <div class="price">0 zł</div>
+            <ul>
+                <li>1M eventów / mies.</li>
+                <li>5k sesji nagrań</li>
+                <li>1 projekt</li>
+            </ul>
+            <button class="plan-btn" onclick="track('plan_selected', 'Free')">Wybierz Free</button>
+        </div>
+        <div class="plan" onclick="track('pricing_click', 'Pro')">
+            <h3>Pro</h3>
+            <div class="price">299 zł</div>
+            <ul>
+                <li>10M eventów / mies.</li>
+                <li>50k sesji nagrań</li>
+                <li>5 projektów</li>
+            </ul>
+            <button class="plan-btn" onclick="track('plan_selected', 'Pro')">Wybierz Pro</button>
+        </div>
+        <div class="plan" onclick="track('pricing_click', 'Enterprise')">
+            <h3>Enterprise</h3>
+            <div class="price">∞</div>
+            <ul>
+                <li>Nielimitowane eventy</li>
+                <li>SSO & SAML</li>
+                <li>Dedykowany support</li>
+            </ul>
+            <button class="plan-btn" onclick="track('plan_selected', 'Enterprise')">Skontaktuj się</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 DataFlow. Zbudowano na PostHog.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+    function track(event, name) {
+        posthog.capture(event, { name: name });
+        const toast = document.getElementById('toast');
+        toast.textContent = '✓ Event: ' + event + ' → ' + name;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+</script>
 </body>
 </html>
